@@ -6,6 +6,8 @@ import com.example.validation.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
+
 @RequiredArgsConstructor
 @Service
 public class UserServiceImpl implements UserService {
@@ -38,10 +40,10 @@ public class UserServiceImpl implements UserService {
 
         User ex = this.userRepository.findById(user.getId()).get();
 
-        if(ex.getId().equals(user.getId())) {
+        if(ex.getId().equals(user.getId()) && ex.getId() !=null) {
             return ex;
         }else {
-            return null;
+            throw new EntityNotFoundException("id not found");
         }
     }
 }
