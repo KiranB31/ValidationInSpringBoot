@@ -32,4 +32,16 @@ public class UserServiceImpl implements UserService {
             return userRepository.findByUserName(userName);
 
     }
+
+    @Override
+    public User getByUserId(User user, Long id) {
+
+        User ex = this.userRepository.findById(user.getId()).get();
+
+        if(ex.getId().equals(user.getId())) {
+            return ex;
+        }else {
+            return null;
+        }
+    }
 }

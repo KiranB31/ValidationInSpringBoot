@@ -83,4 +83,11 @@ public class UserController {
         return users;
     }
 
+    @GetMapping(value = "getUserss/{id}")
+    public User findById(@PathVariable("id") Long id,@RequestBody User user){
+
+        User user1 = this.userService.getByUserId(user,id);
+        return user1;
+    }
+
 }

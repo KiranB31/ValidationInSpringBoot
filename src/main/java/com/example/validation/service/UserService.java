@@ -11,4 +11,6 @@ public interface UserService {
 
 
     User getUserByUsername(String userName);
+
+    User getByUserId(User user, Long id);
 }
